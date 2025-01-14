@@ -1,24 +1,23 @@
 package com.example.workshopspringjpa.services;
 
-import com.example.workshopspringjpa.entities.Order;
-import com.example.workshopspringjpa.repositories.OrderRepository;
+import com.example.workshopspringjpa.entities.Category;
+import com.example.workshopspringjpa.repositories.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class OrderServices {
+public class CategoryServices {
 
     @Autowired
-    private OrderRepository repository;
+    private CategoryRepository repository;
 
-    public List<Order> findAll() {
+    public List<Category> findAll() {
         return repository.findAll();
-
     }
 
-    public Order findById(Long id){
+    public Category findById(int id) {
         return repository.findById(id).get();
     }
 }
