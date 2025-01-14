@@ -1,4 +1,7 @@
 package com.example.workshopspringjpa.repositories;
 
-public class OrderRepository {
+import com.example.workshopspringjpa.entities.Order;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderRepository extends JpaRepository<Order, Long> {
 }
