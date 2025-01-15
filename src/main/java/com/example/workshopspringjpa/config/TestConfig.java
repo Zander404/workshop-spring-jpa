@@ -1,9 +1,6 @@
 package com.example.workshopspringjpa.config;
 
-import com.example.workshopspringjpa.entities.Category;
-import com.example.workshopspringjpa.entities.Order;
-import com.example.workshopspringjpa.entities.Product;
-import com.example.workshopspringjpa.entities.User;
+import com.example.workshopspringjpa.entities.*;
 import com.example.workshopspringjpa.entities.enums.OrderStatus;
 import com.example.workshopspringjpa.repositories.CategoryRepository;
 import com.example.workshopspringjpa.repositories.OrderRepository;
@@ -60,6 +57,12 @@ public class TestConfig implements CommandLineRunner {
         Order ord3 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.CANCELED, u1);
 
         orderRepository.saveAll(Arrays.asList(ord1, ord2, ord3));
+
+        Payment pay1 = new Payment(null, Instant.parse("2019-06-20T19:53:07Z"), ord1);
+
+        ord1.setPayment(pay1);
+
+        orderRepository.save(ord1);
 
 
     }
