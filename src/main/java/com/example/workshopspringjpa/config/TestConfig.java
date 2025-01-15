@@ -2,10 +2,7 @@ package com.example.workshopspringjpa.config;
 
 import com.example.workshopspringjpa.entities.*;
 import com.example.workshopspringjpa.entities.enums.OrderStatus;
-import com.example.workshopspringjpa.repositories.CategoryRepository;
-import com.example.workshopspringjpa.repositories.OrderRepository;
-import com.example.workshopspringjpa.repositories.ProductRepository;
-import com.example.workshopspringjpa.repositories.UserRepository;
+import com.example.workshopspringjpa.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +27,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemsRepository orderItemsRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -57,6 +57,14 @@ public class TestConfig implements CommandLineRunner {
         Order ord3 = new Order(null, Instant.parse("2019-06-20T19:53:07Z"), OrderStatus.CANCELED, u1);
 
         orderRepository.saveAll(Arrays.asList(ord1, ord2, ord3));
+
+
+        OrderItems oi1 = new OrderItems(ord1, p1, 2, p1.getPrice());
+        OrderItems oi2 = new OrderItems(ord1, p3, 1, p3.getPrice());
+        OrderItems oi3 = new OrderItems(ord2, p3, 2, p3.getPrice());
+        OrderItems oi4 = new OrderItems(ord3, p5, 2, p5.getPrice());
+
+        orderItemsRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
         Payment pay1 = new Payment(null, Instant.parse("2019-06-20T19:53:07Z"), ord1);
 
