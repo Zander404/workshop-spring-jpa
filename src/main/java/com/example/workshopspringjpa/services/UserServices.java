@@ -23,5 +23,11 @@ public class UserServices {
         return user.get();
     }
 
+    public User save(User user) {
+        return repository.save(user);
+    }
+
+
+
 
 }
